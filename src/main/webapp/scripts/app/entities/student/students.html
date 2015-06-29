@@ -1,18 +1,18 @@
 <div>
 
-    <h2>Faculties</h2>
+    <h2>Students</h2>
 
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#saveFacultyModal" ng-click="clear()">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Faculty</span>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveStudentModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Student</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="saveFacultyModal" tabindex="-1" role="dialog" aria-labelledby="myFacultyLabel"
+    <div class="modal fade" id="saveStudentModal" tabindex="-1" role="dialog" aria-labelledby="myStudentLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -21,22 +21,27 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title" id="myFacultyLabel">Create or edit a Faculty</h4>
+                        <h4 class="modal-title" id="myStudentLabel">Create or edit a Student</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
                             <label>ID</label>
                             <input type="text" class="form-control" name="id"
-                                   ng-model="faculty.id" readonly>
+                                   ng-model="student.id" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label>Title</label>
-                            <input type="text" class="form-control" name="title"
-                                   ng-model="faculty.title">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="student.name">
 
                         </div>
 
+                        <div class="form-group">
+                            <label>faculty</label>
+                            <select class="form-control" name="faculty" ng-model="student.faculty.id" ng-options="faculty.id as faculty.title for faculty in facultys">
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -51,17 +56,17 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deleteFacultyConfirmation">
+    <div class="modal fade" id="deleteStudentConfirmation">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="deleteForm" ng-submit="confirmDelete(faculty.id)">
+                <form name="deleteForm" ng-submit="confirmDelete(student.id)">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
                         <h4 class="modal-title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Faculty?</p>
+                        <p>Are you sure you want to delete this Student?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
@@ -81,27 +86,29 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Name</th>
+                    <th>faculty</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="faculty in facultys">
-                    <td><a ui-sref="facultyDetail({id:faculty.id})">{{faculty.id}}</a></td>
-                    <td>{{faculty.title}}</td>
-                    <td ng-switch="{active: $state.includes('ROLE_ADMIN')}" ng-switch-when="true" has-role="ROLE_ADMIN">
+                <tr ng-repeat="student in students">
+                    <td><a ui-sref="studentDetail({id:student.id})">{{student.id}}</a></td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.faculty.title}}</td>
+                    <td>
                         <button type="submit"
-                                ui-sref="facultyDetail({id:faculty.id})"
+                                ui-sref="studentDetail({id:student.id})"
                                 class="btn btn-info btn-sm">
                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
                         </button>
                         <button type="submit"
-                                ng-click="showUpdate(faculty.id)"
+                                ng-click="showUpdate(student.id)"
                                 class="btn btn-primary btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
                         </button>
                         <button type="submit"
-                                ng-click="delete(faculty.id)"
+                                ng-click="delete(student.id)"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
                         </button>

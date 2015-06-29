@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span>Mark</span> {{mark.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>Rating</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{mark.rating}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>student</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{mark.student.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>course</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{mark.course.title}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="mark"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

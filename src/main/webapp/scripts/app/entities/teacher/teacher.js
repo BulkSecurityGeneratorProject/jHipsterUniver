@@ -3,33 +3,33 @@
 angular.module('univerApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('course', {
+            .state('teacher', {
                 parent: 'entity',
-                url: '/course',
+                url: '/teacher',
                 data: {
-                    roles: ['ROLE_ANONYMOUS','ROLE_USER'],
-                    pageTitle: 'Courses'
+                    roles: ['ROLE_USER'],
+                    pageTitle: 'Teachers'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/course/courses.html',
-                        controller: 'CourseController'
+                        templateUrl: 'scripts/app/entities/teacher/teachers.html',
+                        controller: 'TeacherController'
                     }
                 },
                 resolve: {
                 }
             })
-            .state('courseDetail', {
+            .state('teacherDetail', {
                 parent: 'entity',
-                url: '/course/:id',
+                url: '/teacher/:id',
                 data: {
                     roles: ['ROLE_USER'],
-                    pageTitle: 'Course'
+                    pageTitle: 'Teacher'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/course/course-detail.html',
-                        controller: 'CourseDetailController'
+                        templateUrl: 'scripts/app/entities/teacher/teacher-detail.html',
+                        controller: 'TeacherDetailController'
                     }
                 },
                 resolve: {

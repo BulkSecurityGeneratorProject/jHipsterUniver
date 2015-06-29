@@ -1,7 +1,6 @@
 package com.univer.service;
 
 import com.univer.domain.Authority;
-import com.univer.domain.PersistentToken;
 import com.univer.domain.User;
 import com.univer.repository.AuthorityRepository;
 import com.univer.repository.PersistentTokenRepository;
@@ -100,8 +99,8 @@ public class UserService {
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
-        // new user is not active
-        newUser.setActivated(false);
+        // new user is ACTIVATED!!!
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);

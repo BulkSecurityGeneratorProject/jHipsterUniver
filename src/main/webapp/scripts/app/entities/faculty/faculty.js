@@ -7,7 +7,7 @@ angular.module('univerApp')
                 parent: 'entity',
                 url: '/faculty',
                 data: {
-                    roles: ['ROLE_USER'],
+                    roles: ['ROLE_ANONYMOUS','ROLE_ADMIN','ROLE_USER'],
                     pageTitle: 'Facultys'
                 },
                 views: {
@@ -16,8 +16,7 @@ angular.module('univerApp')
                         controller: 'FacultyController'
                     }
                 },
-                resolve: {
-                }
+                resolve: {}
             })
             .state('facultyDetail', {
                 parent: 'entity',
@@ -32,7 +31,6 @@ angular.module('univerApp')
                         controller: 'FacultyDetailController'
                     }
                 },
-                resolve: {
-                }
+                resolve: {}
             });
     });

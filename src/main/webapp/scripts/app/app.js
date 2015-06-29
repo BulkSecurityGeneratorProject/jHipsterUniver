@@ -84,9 +84,6 @@ angular.module('univerApp', ['LocalStorageModule',
             }
         });
 
-
         $httpProvider.interceptors.push('authExpiredInterceptor');
-
-
 
     });
